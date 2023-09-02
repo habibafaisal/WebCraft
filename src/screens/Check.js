@@ -3,27 +3,33 @@ import React, {useEffect, useState} from 'react';
 import firestore from '@react-native-firebase/firestore';
 
 const Check = () => {
-  //   const [users, setUsers] = useState();
-  const users = [
-    {name: 'cscschabiba', url: 'https://picsum.photos/200', comment: 'grereg'},
-  ];
-  //   useEffect(() => {
-  //     const subscriber = firestore()
-  //       .collection('checkin')
-  //       .onSnapshot(querySnapshot => {
-  //         const users = [];
+  const [users, setUsers] = useState();
 
-  //         querySnapshot.forEach(documentSnapshot => {
-  //           users.push({
-  //             ...documentSnapshot.data(),
-  //             key: documentSnapshot.id,
-  //           });
-  //         });
+  useEffect(() => {
+    const users = [];
 
-  //         setUsers(users);
-  //         console.log(users);
-  //       });
-  //   });
+    const subscriber = firestore()
+      .collection('checkin')
+      .onSnapshot(
+        querySnapshot => {
+          querySnapshot.forEach(documentSnapshot => {
+            users.push({
+              ...documentSnapshot.data(),
+              key: documentSnapshot.id,
+            });
+          });
+
+          setUsers(users);
+          console.log(users);
+        },
+        error => {
+          console.error('Error fetching Firestore data: ', error);
+        },
+      );
+
+    return () => subscriber();
+  }, []);
+
   const currentDate = new Date();
   return (
     <View
@@ -64,27 +70,27 @@ const Check = () => {
               marginTop: 20,
               backgroundColor: 'white',
               borderRadius: 16,
-              //   width: '100%',
               marginLeft: 5,
               marginRight: 5,
-              margin: 'auto',
-              alignContent: 'center',
-              flex: 1,
-              justifyContent: 'center',
               padding: '5%',
             }}>
-            <Image source={{uri: item.url}} alt="image"></Image>
+            <Image
+              source={{uri: item.url}}
+              style={{width: '100%', height: 200, borderRadius: 16}}
+            />
             <View style={styles.row}>
-              <Image source={item.url} alt=" userimage"></Image>
               <Image
-                // resizeMode="center"
-                // resizeMode="stretch"
-                source={{uri: item.url}}
+                source={require('../assets/user.png')}
+                style={{
+                  width: '20%',
+                  height: 50,
+                  borderRadius: 32,
+                  //   backgroundColor: 'black',
+                }}
               />
               <View style={styles.column}>
                 <Text>{item.name}</Text>
                 <Text>{currentDate.toDateString()}</Text>
-                {/* <Text>{item.url}</Text> */}
               </View>
             </View>
             <View>
@@ -106,6 +112,6 @@ const styles = StyleSheet.create({
   },
   column: {
     flexDirection: 'column',
-    // padding: '5%',
+    marginLeft: '5%',
   },
 });

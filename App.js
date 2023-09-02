@@ -6,7 +6,25 @@ import TabViewExample from './src/screens/TabScreen';
 // import Check from './src/screens/Check';
 
 const App = () => {
-  return <TabViewExample />;
+  return (
+    <View style={{flex: 1}}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Webcraft Assignment App</Text>
+      </View>
+      <TabViewExample />
+    </View>
+  );
+};
+
+const styles = {
+  header: {
+    padding: 20,
+    alignItems: 'center',
+  },
+  headerText: {
+    fontSize: 20,
+    color: 'black', // Customize the text color
+  },
 };
 
 export default App;
