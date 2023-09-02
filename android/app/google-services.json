@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "818243349085",
+    "project_id": "web-craft-8cd9f",
+    "storage_bucket": "web-craft-8cd9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818243349085:android:d2221d83e568bf1b01fbb4",
+        "android_client_info": {
+          "package_name": "com.webcraft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818243349085-l9ascs9pbie7v8dbkd1mcn43a1j9aghk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7bEiSfZn0bTJRbT3o5KTV2DHqmw3o_vg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818243349085-l9ascs9pbie7v8dbkd1mcn43a1j9aghk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
